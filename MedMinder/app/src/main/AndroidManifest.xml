@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".EditDrugInfoActivity">
         </activity>
+        <activity android:name=".ViewDrugInfoActivity">
+        </activity>
     </application>
 
 </manifest>
