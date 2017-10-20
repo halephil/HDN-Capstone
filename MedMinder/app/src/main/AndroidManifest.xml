@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".ViewDrugInfoActivity">
         </activity>
+        <activity android:name=".TimeActivity">
+        </activity>
     </application>
 
 </manifest>
