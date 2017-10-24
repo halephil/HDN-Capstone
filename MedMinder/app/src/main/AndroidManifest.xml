@@ -16,14 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
         <activity
             android:name=".BottomNavigation"
             android:label="@string/title_activity_bottom_navigation"></activity>
-=======
         <activity android:name=".EditDrugInfoActivity">
         </activity>
->>>>>>> d1bc354140c8c853a3d2dd635839dc1cfa9205ec
+
     </application>
 
 </manifest>
