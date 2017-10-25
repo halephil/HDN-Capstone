@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,93 +11,193 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="24dp"
         android:text="Drug Name"/>
 
     <EditText
         android:id="@+id/drug_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4af9ff"/>
+        android:background="#4af9ff"
+        android:textSize="24dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Drug information"
-        android:layout_marginTop="20dp"/>
-
-    <EditText
-        android:id="@+id/drug_info"
-        android:layout_width="match_parent"
-        android:layout_height="160px"
-        android:background="#4af9ff"
+        android:layout_marginTop="20dp"
+        android:textSize="24dp"
         android:text="Drug information"/>
 
+    <EditText
+        android:id="@+id/additional_info"
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:background="#4af9ff"/>
+
+    <TableLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="8dp">
+
+       <TableRow>
+           <TextView
+               android:layout_weight="4"
+               android:text="Doses per day"
+               android:textSize="18dp"/>
+
+           <EditText
+               android:id="@+id/doses_per_day"
+               android:layout_weight="1"
+               android:background="#4af9ff"
+               android:textSize="18dp"/>
+       </TableRow>
+
+       <TableRow android:layout_marginTop="8dp">
+           <TextView
+               android:layout_weight="4"
+               android:text="Quantity per dose"
+               android:textSize="18dp"/>
+
+           <EditText
+               android:id="@+id/qty_per_dose"
+               android:layout_weight="1"
+               android:background="#4af9ff"
+               android:textSize="18dp"/>
+       </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+            <TextView
+                android:layout_weight="4"
+                android:text="Current quantity"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/current_qty"
+                android:layout_weight="1"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+            <TextView
+                android:layout_weight="4"
+                android:text="Quantity per refill"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/qty_per_refill"
+                android:layout_weight="1"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+            <TextView
+                android:layout_weight="4"
+                android:text="No. of refills remaining"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/no_of_refills"
+                android:layout_weight="1"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
+   </TableLayout>
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/button_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="18dp"
             android:text="Time"/>
 
-        <Button
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pill Count"/>
+            android:background="#4af9ff"/>
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:padding="16dp"
+        android:layout_weight="1">
 
         <Button
+            android:id="@+id/save_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Times Taken A Day"
-            android:id="@+id/button2" />
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:onClick="onSaveButtonClick"
+            android:text="Save"/>
 
         <Button
+            android:id="@+id/qr_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pill Count Refill"
-            android:id="@+id/button" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:onClick="onQRButtonClick"
+            android:text="QR"/>
 
         <Button
+            android:id="@+id/cancel_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Accept" />
-
-        android:text="Accept"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:onClick="onCancelButtonClick"
             android:text="Cancel"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Scan QR"/>
 
     </LinearLayout>
 
 </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
