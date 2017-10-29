@@ -104,26 +104,29 @@
                 android:textSize="18dp"/>
         </TableRow>
 
+        <TableRow android:layout_marginTop="8dp">
+            <TextView
+                android:layout_weight="4"
+                android:text="Alert Time"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/edit_time"
+                android:layout_weight="4"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
    </TableLayout>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/button_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:textSize="18dp"
+        android:text="Set Time"/>
 
-        <Button
-            android:id="@+id/button_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Time"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#4af9ff"/>
-
-    </LinearLayout>
 
 
     <LinearLayout
