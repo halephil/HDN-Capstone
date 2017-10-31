@@ -18,6 +18,9 @@ public class Drug {
         this.pillCount = pillCount;
     }
 
+    // Default constructor
+    public Drug(){}
+
     //
     public int decrementPillCount(){
         if(pillCount <= 0)
