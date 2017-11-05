@@ -15,8 +15,6 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
 
     private List<Drug> DrugList = new ArrayList<Drug>();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +25,6 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         populateListView();
 
     }
-
 
     private void populateDrugList(){
         DrugList.add(new Drug("Drug1","This is Drug 1.", 10));
