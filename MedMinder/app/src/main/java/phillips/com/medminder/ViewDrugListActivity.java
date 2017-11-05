@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ViewDrugListActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private List<Drug> DrugList = new ArrayList<Drug>();
+    private List<DrugPO> DrugList = new ArrayList<DrugPO>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,26 +21,25 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_view_drug_list);
         findViewById(R.id.addDrugBtn).setOnClickListener(this);
 
-        populateDrugList();
+        Bundle data = getIntent().getExtras();
+        DrugPO drug = (DrugPO) data.getParcelable("student");
+
+        addDrugToList(drug);
         populateListView();
 
     }
 
-    private void populateDrugList(){
-        DrugList.add(new Drug("Drug1","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug2","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug3","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug4","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug5","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug6","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug7","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug8","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug9","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug10","This is Drug 1.", 10));
+    private void addDrugToList(DrugPO drug){
+        if (drug == null){
+            return;
+        }
+        else
+        DrugList.add(drug);
+
     }
 
     private void populateListView() {
-        ArrayAdapter<Drug> adapter = new MyAdapter();
+        ArrayAdapter<DrugPO> adapter = new MyAdapter();
         ListView list = (ListView)findViewById(R.id.drugListView);
         list.setAdapter(adapter);
     }
@@ -53,7 +52,7 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
-    private class MyAdapter extends ArrayAdapter<Drug> {
+    private class MyAdapter extends ArrayAdapter<DrugPO> {
         public MyAdapter() {
             super(ViewDrugListActivity.this, R.layout.item_view, DrugList);
         }
@@ -65,10 +64,10 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
                 itemView = getLayoutInflater().inflate(R.layout.item_view, parent, false);
             }
 
-            Drug currentDrug = DrugList.get(position);
+            DrugPO currentDrug = DrugList.get(position);
 
             TextView textDrugName = itemView.findViewById((R.id.item_drugName));
-            textDrugName.setText(currentDrug.getName());
+            textDrugName.setText(currentDrug.getmName());
 
             TextView textPillCount = itemView.findViewById((R.id.item_pillCount));
             textPillCount.setText("Pill Count: 123");
