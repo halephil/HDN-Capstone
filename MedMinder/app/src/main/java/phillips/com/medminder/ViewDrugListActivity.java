@@ -20,11 +20,13 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_drug_list);
         findViewById(R.id.addDrugBtn).setOnClickListener(this);
+        addDrugToList(new DrugPO("Drug1","Hello", "123"));
 
-        Bundle data = getIntent().getExtras();
-        DrugPO drug = (DrugPO) data.getParcelable("student");
 
-        addDrugToList(drug);
+
+
+
+
         populateListView();
 
     }
@@ -38,18 +40,31 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    private void populateListView() {
-        ArrayAdapter<DrugPO> adapter = new MyAdapter();
-        ListView list = (ListView)findViewById(R.id.drugListView);
-        list.setAdapter(adapter);
-    }
 
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.addDrugBtn){
-            Intent intent = new Intent(this, EditDrugInfoActivity.class);       //Intent to Check Invites
-            startActivity(intent);
+            Intent intent = new Intent(this, EditDrugInfoActivity.class);
+            startActivityForResult(intent,1);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode ==1 && resultCode==RESULT_OK){
+            DrugPO drug = (DrugPO) data.getExtras().getParcelable("drug");
+            addDrugToList(drug);
+            populateListView();
+        }
+
+
+    }
+
+    private void populateListView() {
+        ArrayAdapter<DrugPO> adapter = new MyAdapter();
+        ListView list = (ListView)findViewById(R.id.drugListView);
+        list.setAdapter(adapter);
     }
 
     private class MyAdapter extends ArrayAdapter<DrugPO> {

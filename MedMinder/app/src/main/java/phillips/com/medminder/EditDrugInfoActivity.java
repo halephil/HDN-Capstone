@@ -11,38 +11,30 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
 
     private DrugPO drug;
     private EditText mDrugName;
-    private Button SaveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_drug_info);
 
-        //SaveButton = (Button) findViewById(R.id.save_btn);
-        //SaveButton.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View view) {
+        drug = new DrugPO();
+        findViewById(R.id.save_btn).setOnClickListener(this);
 
-
-                drug = new DrugPO();
-
-                mDrugName = (EditText) findViewById(R.id.drug_name);
-                drug.setmName(mDrugName.getText().toString());
-                findViewById(R.id.addDrugBtn).setOnClickListener(this);
-
-                Intent intent = new Intent(this, ViewDrugListActivity.class);       //Intent to Check Invites
-                intent.putExtra("drug", drug);
-                startActivity(intent);
-
-            //}
-        //});
     }
 
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(this, ViewDrugListActivity.class);       //Intent to Check Invites
-        intent.putExtra("drug", drug);
-        startActivity(intent);
+        if (view.getId() == R.id.save_btn) {
+
+            mDrugName = (EditText) findViewById(R.id.drug_name);
+            drug.setmName(mDrugName.getText().toString());
+
+            Intent intent = new Intent();       //Intent to Check Invites
+            intent.putExtra("drug", drug);
+            setResult(RESULT_OK,intent);
+            finish();
+
+        }
     }
 }
