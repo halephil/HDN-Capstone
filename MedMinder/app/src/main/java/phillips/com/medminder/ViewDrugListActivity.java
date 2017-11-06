@@ -22,13 +22,7 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         findViewById(R.id.addDrugBtn).setOnClickListener(this);
         addDrugToList(new DrugPO("Drug1","Hello", "123"));
 
-
-
-
-
-
         populateListView();
-
     }
 
     private void addDrugToList(DrugPO drug){
@@ -37,9 +31,7 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         }
         else
         DrugList.add(drug);
-
     }
-
 
     @Override
     public void onClick(View view) {
@@ -57,8 +49,6 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
             addDrugToList(drug);
             populateListView();
         }
-
-
     }
 
     private void populateListView() {
@@ -85,10 +75,9 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
             textDrugName.setText(currentDrug.getmName());
 
             TextView textPillCount = itemView.findViewById((R.id.item_pillCount));
-            textPillCount.setText("Pill Count: 123");
+            textPillCount.setText("Pill Count: " + currentDrug.getmPillCount());
 
             return itemView;
-
         }
     }
 }

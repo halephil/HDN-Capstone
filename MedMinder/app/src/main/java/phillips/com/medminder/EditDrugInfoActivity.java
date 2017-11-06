@@ -11,6 +11,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
 
     private DrugPO drug;
     private EditText mDrugName;
+    private EditText mPillCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,9 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
 
             mDrugName = (EditText) findViewById(R.id.drug_name);
             drug.setmName(mDrugName.getText().toString());
+
+            mPillCount = (EditText) findViewById(R.id.current_qty);
+            drug.setmPillCount(mPillCount.getText().toString());
 
             Intent intent = new Intent();       //Intent to Check Invites
             intent.putExtra("drug", drug);
