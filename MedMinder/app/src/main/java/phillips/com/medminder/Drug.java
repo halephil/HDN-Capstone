@@ -1,10 +1,13 @@
 package phillips.com.medminder;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by halenphillips on 10/10/17.
  */
 
-public class Drug {
+public class Drug{
 
     private String name;
     private String description;

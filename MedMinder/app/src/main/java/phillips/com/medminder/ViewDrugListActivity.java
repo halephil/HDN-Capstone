@@ -13,50 +13,51 @@ import java.util.List;
 
 public class ViewDrugListActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private List<Drug> DrugList = new ArrayList<Drug>();
-
-
+    private List<DrugPO> DrugList = new ArrayList<DrugPO>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_drug_list);
         findViewById(R.id.addDrugBtn).setOnClickListener(this);
+        addDrugToList(new DrugPO("Drug1","Hello", "123"));
 
-        populateDrugList();
         populateListView();
-
     }
 
-
-    private void populateDrugList(){
-        DrugList.add(new Drug("Drug1","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug2","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug3","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug4","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug5","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug6","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug7","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug8","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug9","This is Drug 1.", 10));
-        DrugList.add(new Drug("Drug10","This is Drug 1.", 10));
-    }
-
-    private void populateListView() {
-        ArrayAdapter<Drug> adapter = new MyAdapter();
-        ListView list = (ListView)findViewById(R.id.drugListView);
-        list.setAdapter(adapter);
+    private void addDrugToList(DrugPO drug){
+        if (drug == null){
+            return;
+        }
+        else
+        DrugList.add(drug);
     }
 
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.addDrugBtn){
-            Intent intent = new Intent(this, EditDrugInfoActivity.class);       //Intent to Check Invites
-            startActivity(intent);
+            Intent intent = new Intent(this, EditDrugInfoActivity.class);
+            startActivityForResult(intent,1);
         }
     }
 
-    private class MyAdapter extends ArrayAdapter<Drug> {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode ==1 && resultCode==RESULT_OK){
+            DrugPO drug = (DrugPO) data.getExtras().getParcelable("drug");
+            addDrugToList(drug);
+            populateListView();
+        }
+    }
+
+    private void populateListView() {
+        ArrayAdapter<DrugPO> adapter = new MyAdapter();
+        ListView list = (ListView)findViewById(R.id.drugListView);
+        list.setAdapter(adapter);
+    }
+
+    private class MyAdapter extends ArrayAdapter<DrugPO> {
         public MyAdapter() {
             super(ViewDrugListActivity.this, R.layout.item_view, DrugList);
         }
@@ -68,16 +69,15 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
                 itemView = getLayoutInflater().inflate(R.layout.item_view, parent, false);
             }
 
-            Drug currentDrug = DrugList.get(position);
+            DrugPO currentDrug = DrugList.get(position);
 
             TextView textDrugName = itemView.findViewById((R.id.item_drugName));
-            textDrugName.setText(currentDrug.getName());
+            textDrugName.setText(currentDrug.getmName());
 
             TextView textPillCount = itemView.findViewById((R.id.item_pillCount));
-            textPillCount.setText("Pill Count: 123");
+            textPillCount.setText("Pill Count: " + currentDrug.getmPillCount());
 
             return itemView;
-
         }
     }
 }
