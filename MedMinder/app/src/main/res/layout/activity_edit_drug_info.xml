@@ -128,15 +128,14 @@
         android:text="Set Time"/>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
+        android:layout_weight="1"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:layout_weight="1">
+        android:padding="16dp">
 
         <Button
             android:id="@+id/save_btn"
@@ -145,7 +144,7 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:onClick="onSaveButtonClick"
-            android:text="Save"/>
+            android:text="Save" />
 
         <Button
             android:id="@+id/qr_btn"
@@ -154,7 +153,7 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:onClick="onQRButtonClick"
-            android:text="QR"/>
+            android:text="QR" />
 
         <Button
             android:id="@+id/cancel_btn"
@@ -163,7 +162,7 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:onClick="onCancelButtonClick"
-            android:text="Cancel"/>
+            android:text="Cancel" />
 
     </LinearLayout>
 
