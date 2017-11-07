@@ -20,9 +20,8 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
 
         drug = new DrugPO();
         findViewById(R.id.save_btn).setOnClickListener(this);
-
+        findViewById(R.id.cancel_btn).setOnClickListener(this);
     }
-
 
     @Override
     public void onClick(View view) {
@@ -38,7 +37,9 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
             intent.putExtra("drug", drug);
             setResult(RESULT_OK,intent);
             finish();
+        }else if (view.getId() == R.id.cancel_btn){
 
+            finish();
         }
     }
 }
