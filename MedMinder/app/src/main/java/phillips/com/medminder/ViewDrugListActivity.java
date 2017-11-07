@@ -1,5 +1,6 @@
 package phillips.com.medminder;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,14 +11,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewDrugListActivity extends AppCompatActivity {
+public class ViewDrugListActivity extends AppCompatActivity implements View.OnClickListener {
 
     private List<Drug> DrugList = new ArrayList<Drug>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_drug_list);
+        findViewById(R.id.addDrugBtn).setOnClickListener(this);
+
         populateDrugList();
         populateListView();
 
@@ -41,6 +46,14 @@ public class ViewDrugListActivity extends AppCompatActivity {
         ArrayAdapter<Drug> adapter = new MyAdapter();
         ListView list = (ListView)findViewById(R.id.drugListView);
         list.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.addDrugBtn){
+            Intent intent = new Intent(this, EditDrugInfoActivity.class);       //Intent to Check Invites
+            startActivity(intent);
+        }
     }
 
     private class MyAdapter extends ArrayAdapter<Drug> {
