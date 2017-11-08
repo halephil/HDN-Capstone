@@ -1,39 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:padding="16dp"
-android:orientation="vertical"
-tools:context="phillips.com.medminder.ViewDrugInfoActivity">
-
-<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="24sp"
-    android:text="Drug Name"/>
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context="phillips.com.medminder.ViewDrugInfoActivity">
 
-<EditText
-    android:id="@+id/drug_name"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#4af9ff"
-    android:inputType="text"
-    android:textSize="24sp"/>
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:textSize="24sp"
-    android:text="Drug information"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="Drug Name"/>
 
-<EditText
-    android:id="@+id/additional_info"
-    android:layout_width="match_parent"
-    android:layout_height="90sp"
-    android:inputType="text"
-    android:background="#4af9ff"/>
+    <EditText
+        android:id="@+id/drug_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4af9ff"
+        android:inputType="text"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        android:text="Drug information"/>
+
+    <EditText
+        android:id="@+id/additional_info"
+        android:layout_width="match_parent"
+        android:layout_height="90sp"
+        android:inputType="text"
+        android:background="#4af9ff"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <TableRow>
+            <TextView
+                android:layout_weight="4"
+                android:text="Doses per day"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/doses_per_day"
+                android:layout_weight="1"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+            <TextView
+                android:layout_weight="4"
+                android:text="Quantity per dose"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/qty_per_dose"
+                android:layout_weight="1"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+            <TextView
+                android:layout_weight="4"
+                android:text="Current quantity"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/current_qty"
+                android:layout_weight="1"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+            <TextView
+                android:layout_weight="4"
+                android:text="Quantity per refill"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/qty_per_refill"
+                android:layout_weight="1"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+            <TextView
+                android:layout_weight="4"
+                android:text="No. of refills remaining"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/no_of_refills"
+                android:layout_weight="1"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
+        <TableRow android:layout_marginTop="8dp">
+            <TextView
+                android:layout_weight="4"
+                android:text="Alert Time"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/edit_time"
+                android:layout_weight="4"
+                android:background="#4af9ff"
+                android:textSize="18dp"/>
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>
