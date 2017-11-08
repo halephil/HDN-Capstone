@@ -12,6 +12,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
     private DrugPO drug;
     private EditText mDrugName;
     private EditText mPillCount;
+    private Button setAlarmBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
         drug = new DrugPO();
         findViewById(R.id.save_btn).setOnClickListener(this);
         findViewById(R.id.cancel_btn).setOnClickListener(this);
+        findViewById(R.id.set_alarm_button).setOnClickListener(this);
     }
 
     @Override
@@ -37,9 +39,27 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
             intent.putExtra("drug", drug);
             setResult(RESULT_OK,intent);
             finish();
+
         }else if (view.getId() == R.id.cancel_btn){
 
             finish();
+
+        }else if(view.getId() == R.id.set_alarm_button){
+
+            Intent alarmIntent = new Intent(this, AlarmActivity.class);
+            startActivity(alarmIntent);
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
