@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="phillips.com.medminder">
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,10 +21,13 @@
         <activity android:name=".AlarmActivity">
         </activity>
 
-        <receiver android:name=".MyReceiver"
-                  android:enabled="true"
-                  android:exported="true" />
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true"/>
 
+        <activity android:name=".ViewDrugInfoActivity">
+        </activity>
     </application>
 
 </manifest>
