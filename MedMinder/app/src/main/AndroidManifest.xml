@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="phillips.com.medminder">
+    package="phillips.com.medminder">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,23 +13,21 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ViewDrugListActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditDrugInfoActivity">
-        </activity>
-        <activity android:name=".AlarmActivity">
-        </activity>
+        <activity android:name=".EditDrugInfoActivity"></activity>
+        <activity android:name=".AlarmActivity"></activity>
 
         <receiver
             android:name=".MyReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
-        <activity android:name=".ViewDrugInfoActivity">
-        </activity>
+        <activity android:name=".ViewDrugInfoActivity"></activity>
+        <activity android:name=".SignupActivity"></activity>
     </application>
 
 </manifest>
