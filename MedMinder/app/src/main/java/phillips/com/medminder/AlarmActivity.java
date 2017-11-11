@@ -64,5 +64,4 @@ public class AlarmActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Alarm is set", Toast.LENGTH_SHORT).show();
     }
-
-} // close MainActivity
+}

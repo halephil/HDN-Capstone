@@ -16,18 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".BottomNavigation"
-            android:label="@string/title_activity_bottom_navigation"/>
         <activity android:name=".EditDrugInfoActivity">
         </activity>
         <activity android:name=".AlarmActivity">
         </activity>
 
-        <receiver android:name=".MyReceiver"
-                  android:enabled="true"
-                  android:exported="true" />
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true"/>
 
+        <activity android:name=".ViewDrugInfoActivity">
+        </activity>
     </application>
 
 </manifest>
