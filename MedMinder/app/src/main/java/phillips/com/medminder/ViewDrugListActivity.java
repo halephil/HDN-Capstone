@@ -20,9 +20,7 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_drug_list);
         findViewById(R.id.addDrugBtn).setOnClickListener(this);
-        addDrugToList(new DrugPO("Drug1","Hello", "123"));
 
-        populateListView();
     }
 
     private void addDrugToList(DrugPO drug){

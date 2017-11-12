@@ -19,7 +19,6 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_drug_info);
 
-        drug = new DrugPO();
         findViewById(R.id.save_btn).setOnClickListener(this);
         findViewById(R.id.cancel_btn).setOnClickListener(this);
         findViewById(R.id.set_alarm_button).setOnClickListener(this);
@@ -29,6 +28,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         if (view.getId() == R.id.save_btn) {
 
+            drug = new DrugPO();
             mDrugName = (EditText) findViewById(R.id.drug_name);
             drug.setmName(mDrugName.getText().toString());
 
