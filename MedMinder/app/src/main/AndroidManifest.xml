@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="phillips.com.medminder">
+    package="phillips.com.medminder">
 
     <application
         android:allowBackup="true"
@@ -9,24 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewDrugListActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity android:name=".EditDrugInfoActivity">
-        </activity>
-        <activity android:name=".AlarmActivity">
-        </activity>
+        <activity android:name=".ViewDrugListActivity"></activity>
+        <activity android:name=".EditDrugInfoActivity"></activity>
+        <activity android:name=".AlarmActivity"></activity>
 
         <receiver
             android:name=".MyReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
-        <activity android:name=".ViewDrugInfoActivity">
+        <activity android:name=".ViewDrugInfoActivity"></activity>
+        <activity
+            android:name=".BottomNavActivity"
+            android:label="@string/title_activity_bottom_nav">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
