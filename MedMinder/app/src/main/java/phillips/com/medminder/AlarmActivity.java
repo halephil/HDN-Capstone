@@ -62,6 +62,6 @@ public class AlarmActivity extends AppCompatActivity {
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent);
 
-        Toast.makeText(this, "Alarm is set", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Alarm is set", Toast.LENGTH_LONG).show();
     }
 }
