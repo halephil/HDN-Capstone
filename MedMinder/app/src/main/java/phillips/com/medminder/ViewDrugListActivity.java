@@ -1,6 +1,9 @@
 package phillips.com.medminder;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +23,11 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_drug_list);
         findViewById(R.id.addDrugBtn).setOnClickListener(this);
+
+        //if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_DENIED){
+        ActivityCompat.requestPermissions(this, new String[] {android.Manifest.permission.CAMERA}, 200);
+       // }
+
         addDrugToList(new DrugPO("Drug1","Hello", "123"));
 
         populateListView();
@@ -49,6 +57,7 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
             addDrugToList(drug);
             populateListView();
         }
+
     }
 
     private void populateListView() {
