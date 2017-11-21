@@ -13,11 +13,15 @@ import android.widget.Toast;
 
 public class MyReceiver extends BroadcastReceiver {
 
+    private MediaPlayer mediaPlayer;
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        MediaPlayer mediaPlayer = MediaPlayer.create(context, Settings.System.DEFAULT_RINGTONE_URI);
+        mediaPlayer = MediaPlayer.create(context, Settings.System.DEFAULT_RINGTONE_URI);
         mediaPlayer.start();
 
         Toast.makeText(context, "The alarm has been triggered!", Toast.LENGTH_LONG).show();
+
+
     }
 }
