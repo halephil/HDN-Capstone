@@ -13,6 +13,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.barcode.Barcode;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class EditDrugInfoActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -20,6 +24,11 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
     private EditText mDrugName;
     private EditText mPillCount;
     private Button setAlarmBtn;
+    private EditText DosePerDay;
+    private EditText qtyPerDay;
+    private EditText CurrentQty;
+    private EditText RefillAt;
+    private EditText addInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +49,37 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
 
         //When Save button is pressed
         if (view.getId() == R.id.save_btn) {
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
             drug = new DrugPO();
+
+            addInfo = (EditText) findViewById(R.id.additional_info);
+
+            DosePerDay = (EditText) findViewById(R.id.doses_per_day);
+            String DPD = DosePerDay.getText().toString().trim();
+
+            qtyPerDay = (EditText) findViewById(R.id.qty_per_dose);
+            String QPD = qtyPerDay.getText().toString().trim();
+
+            CurrentQty = (EditText) findViewById(R.id.current_qty);
+            String CQTY = CurrentQty.getText().toString().trim();
+
+            RefillAt = (EditText) findViewById(R.id.no_of_refills);
+            String RA = RefillAt.getText().toString().trim();
 
             mDrugName = (EditText) findViewById(R.id.drug_name);
             drug.setmName(mDrugName.getText().toString());
 
             mPillCount = (EditText) findViewById(R.id.current_qty);
             drug.setmPillCount(mPillCount.getText().toString());
+
+            database.child("User").child(currentUser.getUid()).child("Drugs").child(mDrugName.getText().toString().trim()).child("Drug Info").setValue(addInfo.getText().toString().trim());
+            database.child("User").child(currentUser.getUid()).child("Drugs").child(mDrugName.getText().toString().trim()).child("Doses per Day").setValue(DPD);
+            database.child("User").child(currentUser.getUid()).child("Drugs").child(mDrugName.getText().toString().trim()).child("Quantity per Dose").setValue(QPD);
+            database.child("User").child(currentUser.getUid()).child("Drugs").child(mDrugName.getText().toString().trim()).child("Current Quantity").setValue(CQTY);
+            database.child("User").child(currentUser.getUid()).child("Drugs").child(mDrugName.getText().toString().trim()).child("Refill At").setValue(RA);
+            database.child("User").child(currentUser.getUid()).child("Drugs").child(mDrugName.getText().toString().trim()).child("Pill Count").setValue(mPillCount.getText().toString().trim());
 
             Intent intent = new Intent();       //Intent to Check Invites
             intent.putExtra("drug", drug);

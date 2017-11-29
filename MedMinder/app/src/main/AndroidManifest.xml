@@ -12,23 +12,27 @@
         android:theme="@style/AppTheme">
         <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode"/>
-        <activity android:name=".ViewDrugListActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditDrugInfoActivity"></activity>
-        <activity android:name=".AlarmActivity"></activity>
+        <activity android:name=".EditDrugInfoActivity" />
+        <activity android:name=".AlarmActivity" />
 
         <receiver
             android:name=".MyReceiver"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".ViewDrugInfoActivity"></activity>
-        <activity android:name=".QRScanActivity"></activity>
+        <activity android:name=".ViewDrugInfoActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".ViewDrugListActivity" />
+        <activity android:name=".ResetpasswordActivity" />
+        <activity android:name=".QRScanActivity" />
+
     </application>
 
 </manifest>
