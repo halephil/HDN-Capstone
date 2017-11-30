@@ -3,9 +3,6 @@ package phillips.com.medminder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.provider.Settings;
-import android.widget.Toast;
 
 /**
  * Created by Dave on 10/24/2017.
@@ -13,15 +10,15 @@ import android.widget.Toast;
 
 public class MyReceiver extends BroadcastReceiver {
 
-    private MediaPlayer mediaPlayer;
-
     @Override
     public void onReceive(Context context, Intent intent) {
-        mediaPlayer = MediaPlayer.create(context, Settings.System.DEFAULT_RINGTONE_URI);
-        mediaPlayer.start();
 
-        Toast.makeText(context, "The alarm has been triggered!", Toast.LENGTH_LONG).show();
+        String intent_string = intent.getExtras().getString("extra");
 
+        Intent service_intent = new Intent(context, RingtonePlayingService.class);
 
+        service_intent.putExtra("extra", intent_string);
+
+        context.startService(service_intent);
     }
 }

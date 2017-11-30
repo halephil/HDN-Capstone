@@ -16,9 +16,9 @@ import java.util.Calendar;
 public class AlarmActivity extends AppCompatActivity {
 
     TimePicker mTimePicker;
-    private Button alarmmStopBtn;
-    static AlarmManager alarmManager;
-    static PendingIntent pendingIntent;
+    AlarmManager alarmManager;
+    Intent intent;
+    PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,34 +53,30 @@ public class AlarmActivity extends AppCompatActivity {
 
                 setAlarm(calendar.getTimeInMillis());
 
-            } // close onClick()
-        }); // close setOnClickListener
-
-
-        alarmmStopBtn = (Button) findViewById(R.id.stopAlarmButton);
-        alarmmStopBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                stopAlarm();
             }
-        });
+        }); // close setOnClickListener
 
     } // close onCreate()
 
     private void setAlarm(long timeInMillis){
-        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         Intent intent = new Intent(this, MyReceiver.class);
+        intent.putExtra("extra", "start");
 
-        pendingIntent = PendingIntent.getBroadcast(this, 1234567 , intent, 0);
+        pendingIntent = PendingIntent.getBroadcast(this, 0 , intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent);
 
         Toast.makeText(this, "Alarm is set", Toast.LENGTH_LONG).show();
     }
 
-    private void stopAlarm(){
+    public void onStopClick(View view) {
 
-        alarmManager.cancel(pendingIntent);
+        Intent stopIntent = new Intent(this, RingtonePlayingService.class);
+        stopService(stopIntent);
     }
 }
+
+

@@ -21,13 +21,16 @@
         <activity android:name=".AlarmActivity">
         </activity>
 
-        <receiver
-            android:name=".MyReceiver"
-            android:enabled="true"
-            android:exported="true"/>
-
         <activity android:name=".ViewDrugInfoActivity">
         </activity>
+
+        <receiver android:name=".MyReceiver"/>
+
+        <service android:name=".RingtonePlayingService"
+                 android:enabled="true"
+                 android:exported="true">
+        </service>
+
     </application>
 
 </manifest>
