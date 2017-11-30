@@ -54,14 +54,22 @@ public class AlarmActivity extends AppCompatActivity {
     } // close onCreate()
 
     private void setAlarm(long timeInMillis){
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         Intent intent = new Intent(this, MyReceiver.class);
+        intent.putExtra("extra", "start");
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0 , intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0 , intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent);
 
         Toast.makeText(this, "Alarm is set", Toast.LENGTH_SHORT).show();
+    }
+
+    public void onStopClick(View view) {
+
+        Intent stopIntent = new Intent(this, RingtonePlayingService.class);
+        stopService(stopIntent);
     }
 }
