@@ -15,8 +15,11 @@ import android.widget.Toast;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class EditDrugInfoActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -29,6 +32,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
     private EditText CurrentQty;
     private EditText RefillAt;
     private EditText addInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,11 +116,30 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("PrescriptID");
+        DataSnapshot dataSnapshot;
+
+
+
+        addInfo = (EditText) findViewById(R.id.additional_info);
+
         if(requestCode ==1 && resultCode==RESULT_OK){
 
             Barcode barcode = (Barcode) data.getParcelableExtra("barcode");
-          
-            Toast.makeText(getApplicationContext(),barcode.rawValue, Toast.LENGTH_LONG).show();
+            database.child(barcode.rawValue.toString()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String prescriptInfo = dataSnapshot.getValue().toString();
+                    addInfo.setText(prescriptInfo);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(getApplicationContext(),"Read failed:" + databaseError.getCode(), Toast.LENGTH_LONG).show();
+                }
+            });
+            //Toast.makeText(getApplicationContext(),barcode.rawValue, Toast.LENGTH_LONG).show();
 
         }
     }
