@@ -16,6 +16,10 @@ public class AlarmActivity extends AppCompatActivity {
 
     TimePicker mTimePicker;
 
+    Intent intent;
+    PendingIntent pendingIntent;
+    AlarmManager alarmManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +59,12 @@ public class AlarmActivity extends AppCompatActivity {
 
     private void setAlarm(long timeInMillis){
 
-        Intent intent = new Intent(this, MyReceiver.class);
+        intent = new Intent(this, MyReceiver.class);
         intent.putExtra("extra", "start");
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0 , intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        pendingIntent = PendingIntent.getBroadcast(this, 0 , intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+       alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent);
 
