@@ -105,8 +105,6 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
 
         //When Scan QR Button is pressed
         if(view.getId() == R.id.qr_btn){
-
-
             Intent qrScanIntent = new Intent(this, QRScanActivity.class);
             startActivityForResult(qrScanIntent,1);
         }
