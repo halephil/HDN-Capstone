@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewDrugListActivity extends AppCompatActivity implements View.OnClickListener {
-
+    Intent i;
     private List<DrugPO> DrugList = new ArrayList<DrugPO>();
 
     @Override

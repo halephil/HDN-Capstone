@@ -1,125 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="@color/input_register_bg"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context="phillips.com.medminder.ViewDrugInfoActivity">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Drug Name"/>
+        android:text="Drug Name"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/drug_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4af9ff"
         android:inputType="text"
-        android:textSize="24sp"/>
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:textSize="24sp"
-        android:text="Drug information"/>
+        android:text="Drug information"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/additional_info"
         android:layout_width="match_parent"
         android:layout_height="90sp"
         android:inputType="text"
-        android:background="#4af9ff"/>
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp" />
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp">
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <TableRow>
+
             <TextView
                 android:layout_weight="4"
                 android:text="Doses per day"
-                android:textSize="18dp"/>
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/doses_per_day"
                 android:layout_weight="1"
-                android:background="#4af9ff"
-                android:textSize="18dp"/>
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp" />
         </TableRow>
 
         <TableRow android:layout_marginTop="8dp">
+
             <TextView
                 android:layout_weight="4"
                 android:text="Quantity per dose"
-                android:textSize="18dp"/>
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/qty_per_dose"
                 android:layout_weight="1"
-                android:background="#4af9ff"
-                android:textSize="18dp"/>
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp" />
         </TableRow>
 
         <TableRow android:layout_marginTop="8dp">
+
             <TextView
                 android:layout_weight="4"
-                android:text="Current quantity"
-                android:textSize="18dp"/>
+                android:text="Pill Count"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/current_qty"
                 android:layout_weight="1"
-                android:background="#4af9ff"
-                android:textSize="18dp"/>
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp" />
         </TableRow>
 
         <TableRow android:layout_marginTop="8dp">
+
             <TextView
                 android:layout_weight="4"
                 android:text="Quantity per refill"
-                android:textSize="18dp"/>
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/qty_per_refill"
                 android:layout_weight="1"
-                android:background="#4af9ff"
-                android:textSize="18dp"/>
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp" />
         </TableRow>
 
         <TableRow android:layout_marginTop="8dp">
-            <TextView
-                android:layout_weight="4"
-                android:text="No. of refills remaining"
-                android:textSize="18dp"/>
 
-            <EditText
-                android:id="@+id/no_of_refills"
-                android:layout_weight="1"
-                android:background="#4af9ff"
-                android:textSize="18dp"/>
-        </TableRow>
-
-        <TableRow android:layout_marginTop="8dp">
             <TextView
                 android:layout_weight="4"
                 android:text="Alert Time"
-                android:textSize="18dp"/>
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
-            <EditText
-                android:id="@+id/edit_time"
+            <TextView
+                android:id="@+id/alert_time"
                 android:layout_weight="4"
-                android:background="#4af9ff"
-                android:textSize="18dp"/>
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp" />
+
         </TableRow>
 
     </TableLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@color/colorAccent"
+        android:paddingBottom="0dp"
+        android:paddingTop="0dp"
+        android:text="Button"
+        android:textSize="18sp"
+        tools:text="Edit Info" />
 
 </LinearLayout>
