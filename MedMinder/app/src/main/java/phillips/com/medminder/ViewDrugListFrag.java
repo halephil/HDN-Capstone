@@ -38,6 +38,7 @@ public class ViewDrugListFrag extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    View view;
 
     private List<DrugPO> DrugList = new ArrayList<DrugPO>();
     private List<DrugPO> subDrugList = new ArrayList<DrugPO>();
@@ -186,13 +187,14 @@ public class ViewDrugListFrag extends Fragment {
         if (drug == null){
             return;
         }
-        else
+        else{
             DrugList.add(drug);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void populateListView(View view) {
-        getListOFDrugs();
+        //getListOFDrugs();
         ArrayAdapter<DrugPO> adapter = new MyAdapter(getContext());
         ListView list = (ListView)view.findViewById(R.id.drugListView);
         list.setAdapter(adapter);
