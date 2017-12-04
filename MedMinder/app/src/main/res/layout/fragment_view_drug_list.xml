@@ -13,7 +13,7 @@
         android:id="@+id/viewDrugListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Prescription List"
+        android:text="Drug List"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/white"
         android:textSize="36sp"
@@ -21,9 +21,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_conversion_absoluteHeight="47dp"
-        tools:layout_conversion_absoluteWidth="257dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="8dp" />
+        tools:layout_conversion_absoluteWidth="257dp" />
 
     <Button
         android:id="@+id/addDrugBtn"
@@ -31,6 +29,8 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorAccent"
         android:text="ADD Drug"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,5 +50,34 @@
         app:layout_constraintTop_toBottomOf="@+id/viewDrugListTitle"
         tools:layout_conversion_absoluteHeight="1dp"
         tools:layout_conversion_absoluteWidth="1dp" />
+
+    <Button
+        android:id="@+id/today_btn"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/input_register_bg"
+        android:text="Today's"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/drugListView"
+        app:layout_constraintEnd_toStartOf="@+id/all_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/all_btn"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorAccent"
+        android:text="ALL"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/drugListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

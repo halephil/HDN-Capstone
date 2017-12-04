@@ -28,7 +28,6 @@ public class BtmActivity extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.content, viewDrugListF).commit();
                     return true;
                 case R.id.navigation_dashboard:
-
                     return true;
                 case R.id.navigation_notifications:
                     return true;

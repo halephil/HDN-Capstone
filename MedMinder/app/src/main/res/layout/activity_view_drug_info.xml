@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,12 +10,38 @@
     tools:context="phillips.com.medminder.ViewDrugInfoActivity">
 
 
-    <TextView
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Drug Name"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:text="Drug Name"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/edit_btn"
+            android:layout_width="63dp"
+            android:layout_height="match_parent"
+            android:background="@color/btn_login"
+            android:text="Edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/takepill_btn" />
+
+        <Button
+            android:id="@+id/delete_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:background="@android:color/holo_red_light"
+            android:paddingLeft="0dp"
+            android:text="Delete" />
+
+    </TableRow>
 
     <TextView
         android:id="@+id/drug_name"
@@ -22,23 +49,24 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:textColor="@color/colorAccent"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Drug information"
+        android:text="Drug Information"
         android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/additional_info"
         android:layout_width="match_parent"
-        android:layout_height="90sp"
+        android:layout_height="72dp"
         android:inputType="text"
         android:textColor="@color/colorAccent"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -55,13 +83,13 @@
                 android:layout_weight="4"
                 android:text="Doses per day"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/doses_per_day"
                 android:layout_weight="1"
                 android:textColor="@color/colorAccent"
-                android:textSize="18dp" />
+                android:textSize="24sp" />
         </TableRow>
 
         <TableRow android:layout_marginTop="8dp">
@@ -70,13 +98,13 @@
                 android:layout_weight="4"
                 android:text="Quantity per dose"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/qty_per_dose"
                 android:layout_weight="1"
                 android:textColor="@color/colorAccent"
-                android:textSize="18dp" />
+                android:textSize="24sp" />
         </TableRow>
 
         <TableRow android:layout_marginTop="8dp">
@@ -85,13 +113,13 @@
                 android:layout_weight="4"
                 android:text="Pill Count"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/current_qty"
                 android:layout_weight="1"
                 android:textColor="@color/colorAccent"
-                android:textSize="18dp" />
+                android:textSize="24sp" />
         </TableRow>
 
         <TableRow android:layout_marginTop="8dp">
@@ -100,13 +128,13 @@
                 android:layout_weight="4"
                 android:text="Quantity per refill"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/qty_per_refill"
                 android:layout_weight="1"
                 android:textColor="@color/colorAccent"
-                android:textSize="18dp" />
+                android:textSize="24sp" />
         </TableRow>
 
         <TableRow android:layout_marginTop="8dp">
@@ -115,28 +143,98 @@
                 android:layout_weight="4"
                 android:text="Alert Time"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/alert_time"
                 android:layout_weight="4"
                 android:textColor="@color/colorAccent"
-                android:textSize="18dp" />
+                android:textSize="24sp" />
 
         </TableRow>
 
     </TableLayout>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="356dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:background="@color/colorAccent"
-        android:paddingBottom="0dp"
-        android:paddingTop="0dp"
-        android:text="Button"
-        android:textSize="18sp"
-        tools:text="Edit Info" />
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <CheckBox
+            android:id="@+id/mon_cb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:duplicateParentState="false"
+            android:text="M"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/tues_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="T"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/wed_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="W"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/thurs_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Th"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/fri_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="F"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/sat_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sat"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/sun_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sun"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </TableRow>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="32dp">
+
+        <Button
+            android:id="@+id/takepill_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorAccent"
+            android:text="Take Pill"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

@@ -2,10 +2,14 @@ package phillips.com.medminder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +40,8 @@ public class ViewDrugListFrag extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private List<DrugPO> DrugList = new ArrayList<DrugPO>();
+    private List<DrugPO> subDrugList = new ArrayList<DrugPO>();
+    boolean SortByDay = false;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -73,11 +79,12 @@ public class ViewDrugListFrag extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        addDrugToList(new DrugPO("Drug1","Hello", "123"));
+        addDrugToList(new DrugPO("Drug1","Hello", 12));
 
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,12 +95,15 @@ public class ViewDrugListFrag extends Fragment {
         populateListView(view);
 
         Button btnAddDrug = (Button)view.findViewById(R.id.addDrugBtn);
+        final Button btnAll = (Button)view.findViewById(R.id.all_btn);
+        final Button btnToday = (Button)view.findViewById(R.id.today_btn);
         ListView lv = (ListView)view.findViewById(R.id.drugListView);
 
         btnAddDrug.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), EditDrugInfoActivity.class);
+                intent.setAction("CreateNewDrug");
                 startActivityForResult(intent,1);
             }
         });
@@ -105,6 +115,30 @@ public class ViewDrugListFrag extends Fragment {
                 Intent intent = new Intent(getActivity().getApplicationContext(), ViewDrugInfoActivity.class);
                 intent.putExtra("drug", drugPO);
                 startActivityForResult(intent,2);
+            }
+        });
+
+        btnAll.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                btnAll.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                btnToday.setBackgroundColor(getResources().getColor(R.color.input_register_bg));
+                //SortByDay = false;
+                //populateListView(getView());
+            }
+        });
+
+        btnToday.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                btnAll.setBackgroundColor(getResources().getColor(R.color.input_register_bg));
+                btnToday.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                //SortByDay = true;
+                //populateListView(getView());
+
+
             }
         });
 
@@ -156,12 +190,15 @@ public class ViewDrugListFrag extends Fragment {
             DrugList.add(drug);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void populateListView(View view) {
+        getListOFDrugs();
         ArrayAdapter<DrugPO> adapter = new MyAdapter(getContext());
         ListView list = (ListView)view.findViewById(R.id.drugListView);
         list.setAdapter(adapter);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -170,7 +207,70 @@ public class ViewDrugListFrag extends Fragment {
             addDrugToList(drug);
             populateListView(getView());
         }
+        if(requestCode ==2 && resultCode==RESULT_OK){
 
+            DrugPO drug = (DrugPO) data.getExtras().getParcelable("drug");
+            if(data.getAction() == "Delete"){
+                DrugList.remove(drug.getIndexPos());
+            }
+            else{
+                DrugList.remove(drug.getIndexPos());
+                addDrugToList(drug);
+            }
+
+            populateListView(getView());
+        }
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void getListOFDrugs(){
+        subDrugList.clear();
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        if(SortByDay == true) {
+            Log.d("ISMONDAY", "LOOP");
+            for(int i = 0 ; i <DrugList.size(); i++) {
+                DrugPO drugPO = DrugList.get(i);
+                Log.d("ISMONDAY", Boolean.toString(drugPO.isMonday()));
+                switch (day) {
+                    case Calendar.MONDAY:
+                        if(drugPO.isMonday() == true)
+                            subDrugList.add(drugPO);
+                        Log.d("ISMONDAY", Boolean.toString(drugPO.isMonday()));
+
+                    case Calendar.TUESDAY:
+                        if(drugPO.isTuesday() == true)
+                            subDrugList.add(drugPO);
+
+                    case Calendar.WEDNESDAY:
+                        if(drugPO.isWednesday() == true)
+                            subDrugList.add(drugPO);
+
+                    case Calendar.THURSDAY:
+                        if(drugPO.isThursday() == true)
+                            subDrugList.add(drugPO);
+
+                    case Calendar.FRIDAY:
+                        if(drugPO.isFriday() == true)
+                            subDrugList.add(drugPO);
+
+                    case Calendar.SATURDAY:
+                        if(drugPO.isSaturday() == true)
+                            subDrugList.add(drugPO);
+
+                    case Calendar.SUNDAY:
+                        if(drugPO.isSunday() == true)
+                            subDrugList.add(drugPO);
+
+                }
+            }
+
+        }
+        else{
+            Log.d("ISMONDAY", "HERE");
+            subDrugList = DrugList;
+        }
     }
 
     private class MyAdapter extends ArrayAdapter<DrugPO> {
@@ -181,11 +281,14 @@ public class ViewDrugListFrag extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View itemView = convertView;
+
             if (itemView == null) {
                 itemView = getLayoutInflater().inflate(R.layout.item_view, parent, false);
             }
 
             DrugPO currentDrug = DrugList.get(position);
+
+            currentDrug.setIndexPos(position);
 
             TextView textDrugName = itemView.findViewById((R.id.item_drugName));
             textDrugName.setText(currentDrug.getmName());
