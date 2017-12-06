@@ -16,7 +16,7 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
 
-        <activity android:name=".BtmActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +42,7 @@
         <activity android:name=".ViewDrugListActivity" />
         <activity android:name=".ResetpasswordActivity" />
         <activity android:name=".QRScanActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".BtmActivity" />
     </application>
 
 </manifest>

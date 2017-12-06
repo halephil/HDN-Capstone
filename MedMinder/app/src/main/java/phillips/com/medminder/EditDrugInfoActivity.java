@@ -89,7 +89,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
 
 
 
-            //saveDrugToDataBase(drug);
+            saveDrugToDataBase(drug);
 
             Intent intent = new Intent();       //Intent to Check Invites
             intent.putExtra("drug", drug);
