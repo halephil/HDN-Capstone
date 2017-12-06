@@ -54,7 +54,7 @@ public class ViewDrugInfoActivity extends AppCompatActivity implements View.OnCl
         qtyPerDose = (TextView) findViewById(R.id.qty_per_dose);
         pillCount = (TextView) findViewById(R.id.current_qty);
         qtyPerRefill = (TextView) findViewById(R.id.qty_per_refill);
-        //alertTime = (TextView) findViewById(R.id.alert_time);
+        alertTime = (TextView) findViewById(R.id.alert_time);
 
         Mon = (CheckBox) findViewById(R.id.mon_cb);
         Tues = (CheckBox) findViewById(R.id.tues_cb);
@@ -70,6 +70,7 @@ public class ViewDrugInfoActivity extends AppCompatActivity implements View.OnCl
         qtyPerDose.setText(Integer.toString(drugPO.getmQuantityPerDose()));
         pillCount.setText(Integer.toString(drugPO.getmPillCount()));
         qtyPerRefill.setText(Integer.toString(drugPO.getmRefillAt()));
+        alertTime.setText(drugPO.getmAlarmTime());
 
         Mon.setClickable(false);
         Tues.setClickable(false);

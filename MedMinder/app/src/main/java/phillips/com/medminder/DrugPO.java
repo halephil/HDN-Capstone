@@ -8,6 +8,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class DrugPO implements Parcelable{
+
+
+    private String mAlarmTime;
     private String mName;
     private String mDescription;
     private int mDosesPerDay;
@@ -27,6 +30,7 @@ public class DrugPO implements Parcelable{
     private boolean Sunday;
 
     public DrugPO(){
+        this.mAlarmTime = "N/A";
         this.mName = "";
         this.mDescription = "";
         this.mDosesPerDay = 0;
@@ -44,7 +48,7 @@ public class DrugPO implements Parcelable{
 
     // Constructor
     public DrugPO(String name, String description, int pillCount){
-
+        this.mAlarmTime = "N/A";
         this.mName = "";
         this.mDescription = "";
         this.mDosesPerDay = 0;
@@ -82,20 +86,15 @@ public class DrugPO implements Parcelable{
         }
 
     }
+    public String getmAlarmTime() {return mAlarmTime;}
+
+    public void setmAlarmTime(String mAlarmTime) {this.mAlarmTime = mAlarmTime;}
 
     public void setmName(String mName) {
         this.mName = mName;
     }
 
-    public String getmDescription() {
-
-        if(mDescription == null){
-            return "";
-        }
-        else{
-            return mDescription;
-        }
-    }
+    public String getmDescription() {return mDescription;}
 
     public void setmDescription(String mDescription) {
         this.mDescription = mDescription;
@@ -157,7 +156,7 @@ public class DrugPO implements Parcelable{
 
     // Parcelling part
     public DrugPO(Parcel in){
-        String[] data = new String[14];
+        String[] data = new String[15];
 
         in.readStringArray(data);
         // the order needs to be the same as in writeToParcel() method
@@ -175,6 +174,7 @@ public class DrugPO implements Parcelable{
         this.Friday = Boolean.parseBoolean(data[11]);
         this.Saturday = Boolean.parseBoolean(data[12]);
         this.Sunday = Boolean.parseBoolean(data[13]);
+        this.mAlarmTime = data[14];
     }
 
     @Override
@@ -198,7 +198,8 @@ public class DrugPO implements Parcelable{
                 Boolean.toString(this.Thursday),
                 Boolean.toString(this.Friday),
                 Boolean.toString(this.Saturday),
-                Boolean.toString(this.Sunday)
+                Boolean.toString(this.Sunday),
+                this.mAlarmTime
         });
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

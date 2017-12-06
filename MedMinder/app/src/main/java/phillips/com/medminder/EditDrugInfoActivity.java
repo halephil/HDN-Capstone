@@ -12,6 +12,7 @@ import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.barcode.Barcode;
@@ -33,6 +34,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
     private EditText qtyPerDose;
     private EditText RefillAt;
     private EditText addInfo;
+    private TextView alertTime;
 
     private CheckBox Mon;
     private CheckBox Tues;
@@ -104,7 +106,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
         //When Set Alarm button is pressed
         if(view.getId() == R.id.set_alarm_button){
             Intent alarmIntent = new Intent(this, AlarmActivity.class);
-            startActivity(alarmIntent);
+            startActivityForResult(alarmIntent,2);
         }
 
         //When Scan QR Button is pressed
@@ -144,6 +146,11 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
             //Toast.makeText(getApplicationContext(),barcode.rawValue, Toast.LENGTH_LONG).show();
 
         }
+
+        if(requestCode ==2 && resultCode==RESULT_OK){
+            drug.setmAlarmTime(data.getStringExtra("AlertTime"));
+            updatePageInfo(drug);
+        }
     }
 
     DrugPO grabPageInfo(DrugPO drugPO){
@@ -153,6 +160,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
         qtyPerDose = (EditText) findViewById(R.id.qty_per_dose);
         RefillAt = (EditText) findViewById(R.id.no_of_refills);
         mPillCount = (EditText) findViewById(R.id.current_qty);
+        alertTime = (TextView) findViewById(R.id.edit_time);
 
         Mon = (CheckBox) findViewById(R.id.mon_cb2);
         Tues = (CheckBox) findViewById(R.id.tues_cb2);
@@ -168,6 +176,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
         drugPO.setmQuantityPerDose(Integer.parseInt(qtyPerDose.getText().toString().trim()));
         drugPO.setmRefillAt(Integer.parseInt(RefillAt.getText().toString().trim()));
         drugPO.setmPillCount(Integer.parseInt(mPillCount.getText().toString().trim()));
+
 
         drugPO.setMonday(Mon.isChecked());
         drugPO.setTuesday(Tues.isChecked());
@@ -190,6 +199,7 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
         qtyPerDose = (EditText) findViewById(R.id.qty_per_dose);
         RefillAt = (EditText) findViewById(R.id.no_of_refills);
         mPillCount = (EditText) findViewById(R.id.current_qty);
+        alertTime = (TextView) findViewById(R.id.edit_time);
 
         Mon = (CheckBox) findViewById(R.id.mon_cb2);
         Tues = (CheckBox) findViewById(R.id.tues_cb2);
@@ -205,6 +215,8 @@ public class EditDrugInfoActivity extends AppCompatActivity implements View.OnCl
         qtyPerDose.setText(Integer.toString(drugPO.getmQuantityPerDose()));
         RefillAt.setText(Integer.toString(drugPO.getmRefillAt()));
         mPillCount.setText(Integer.toString(drugPO.getmPillCount()));
+        alertTime.setText(drugPO.getmAlarmTime());
+
 
 
         Mon.setClickable(true);

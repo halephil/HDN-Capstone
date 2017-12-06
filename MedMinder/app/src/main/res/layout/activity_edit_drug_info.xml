@@ -97,23 +97,7 @@
 
             <TextView
                 android:layout_weight="4"
-                android:text="Quantity per refill"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
-
-            <EditText
-                android:id="@+id/qty_per_refill"
-                android:layout_weight="1"
-                android:background="@color/input_register"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
-        </TableRow>
-
-        <TableRow android:layout_marginTop="8dp">
-
-            <TextView
-                android:layout_weight="4"
-                android:text="No. of refills remaining"
+                android:text="Quantity per Refill"
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
@@ -133,12 +117,15 @@
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/edit_time"
+                android:layout_width="wrap_content"
                 android:layout_weight="4"
                 android:background="@color/input_register"
+                android:editable="false"
                 android:textColor="@color/white"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                tools:editable="false" />
 
         </TableRow>
 
