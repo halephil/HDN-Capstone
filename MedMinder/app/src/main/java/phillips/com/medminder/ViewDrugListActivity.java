@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewDrugListActivity extends AppCompatActivity implements View.OnClickListener {
-
+    Intent i;
     private List<DrugPO> DrugList = new ArrayList<DrugPO>();
 
     @Override
@@ -28,7 +28,7 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         ActivityCompat.requestPermissions(this, new String[] {android.Manifest.permission.CAMERA}, 200);
        // }
 
-        addDrugToList(new DrugPO("Drug1","Hello", "123"));
+        addDrugToList(new DrugPO("Drug1","Hello", 12));
 
         populateListView();
     }
@@ -37,8 +37,9 @@ public class ViewDrugListActivity extends AppCompatActivity implements View.OnCl
         if (drug == null){
             return;
         }
-        else
-        DrugList.add(drug);
+        else {
+            DrugList.add(drug);
+        }
     }
 
     @Override
